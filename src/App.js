@@ -9,13 +9,6 @@ const user = {
   phone: '666666665'
 }
 
-const toPrint = `
-  Nombre: ${user.name};
-  Apellidos: ${user.surname};
-  Dirección: ${user.address};
-  Teléfono: ${user.phone};
-`;
-
 const {name, surname, address, phone} = user;
 const toPrint2 = `
 Nombre: ${name};
@@ -24,13 +17,23 @@ Dirección: ${address};
 Teléfono: ${phone};
 `;
 
+const sayHi = hiText => `${hiText}, ${name}`;
+
+const sayHi2 = (hiText) => {
+  return `${hiText}, ${name}`;
+}
+
+const sayHi3 = function(hiText) {
+  return `${hiText}, ${name}`;
+}
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">{toPrint2}</h1>
+          <h1 className="App-title">{sayHi3('Hola')}</h1>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
