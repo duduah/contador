@@ -4,7 +4,11 @@ import './App.css';
 
 const myArray = [1,2,3,4,5,6,7,8,9];
 
-const result1 = myArray.map(v => `${v * 2}, `)
+const result1 = myArray.map((v, k) => {
+  const value = v * 2
+  const append = k < (myArray.length - 1) ? ', ' : '';
+  return `${value}${append}`;
+})
 
 class App extends Component {
   render() {
