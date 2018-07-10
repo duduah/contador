@@ -4,11 +4,17 @@ import './App.css';
 
 const myArray = [1,2,3,4,5,6,7,8,9];
 
+const addAppend = arr => arr.map((v, k) => {
+  const append = k < arr.length - 1 ? ', ': '';
+  return `${v}${append}`;
+});
+
 const result1 = myArray.map((v, k) => {
   const value = v * 2
-  const append = k < (myArray.length - 1) ? ', ' : '';
-  return `${value}${append}`;
-})
+  return `${value}`;
+});
+
+const result2 = myArray.filter(v => v % 2 == 0);
 
 class App extends Component {
   render() {
@@ -21,12 +27,16 @@ class App extends Component {
         <p className="App-intro">
         <p>
             <b>myArray:</b>
-            {myArray}
-          </p>
-          <p>
-            <b>Result1:</b>
-            {result1}
-          </p>
+            {addAppend(myArray)}
+        </p>
+        <p>
+          <b>Dobles:</b>
+          {addAppend(result1)}
+        </p>
+        <p>
+          <b>Pares:</b>
+          {addAppend(result2)}
+        </p>
         </p>
       </div>
     );
