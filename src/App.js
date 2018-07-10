@@ -2,30 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const user = {
-  name: 'Diego',
-  surname: 'Gay Saez',
-  address: 'C/ Calandria, 13',
-  phone: '666666665'
-}
+const myArray = [1,2,3,4,5,6,7,8,9];
 
-const {name, surname, address, phone} = user;
-const toPrint2 = `
-Nombre: ${name};
-Apellidos: ${surname};
-Dirección: ${address};
-Teléfono: ${phone};
-`;
-
-const sayHi = hiText => `${hiText}, ${name}`;
-
-const sayHi2 = (hiText) => {
-  return `${hiText}, ${name}`;
-}
-
-const sayHi3 = function(hiText) {
-  return `${hiText}, ${name}`;
-}
+const result1 = myArray.map(v => `${v * 2}, `)
 
 class App extends Component {
   render() {
@@ -33,10 +12,17 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">{sayHi3('Hola')}</h1>
+          <h1 className="App-title">Diego GS</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <p>
+            <b>myArray:</b>
+            {myArray}
+          </p>
+          <p>
+            <b>Result1:</b>
+            {result1}
+          </p>
         </p>
       </div>
     );
