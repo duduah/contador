@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const myArray = [1,2,3,4,5,6,7,8,9];
+function sumParams(...params) {
+  return params.reduce((acc, curr) => acc + curr, 0)
+}
 
-const addAppend = arr => arr.map((v, k) => {
-  const append = k < arr.length - 1 ? ', ': '';
-  return `${v}${append}`;
-});
+const myObj = {
+  d: 'fuu',
+  c: 'foo',
+  b: 'bar',
+  a: 'baz'
+};
 
-const result1 = myArray.map((v, k) => {
-  const value = v * 2
-  return `${value}`;
-});
+const { a, b, ...rest} = myObj
 
-const result2 = myArray.filter(v => v % 2 == 0);
+const newObj = {
+  ...rest,
+  d: 'fuh'
+};
 
 class App extends Component {
   render() {
@@ -26,16 +30,24 @@ class App extends Component {
         </header>
         <p className="App-intro">
         <p>
-            <b>myArray:</b>
-            {addAppend(myArray)}
+          <b>a:</b>
+          {a}
         </p>
         <p>
-          <b>Dobles:</b>
-          {addAppend(result1)}
+          <b>b:</b>
+          {b}
         </p>
         <p>
-          <b>Pares:</b>
-          {addAppend(result2)}
+          <b>rest:</b>
+          {JSON.stringify(rest)}
+        </p>
+        <p>
+          <b>newObj:</b>
+          {JSON.stringify(newObj)}
+        </p>
+        <p>
+          <b>sumParams: </b>
+          {sumParams(1, 2, 3, 4)}
         </p>
         </p>
       </div>
