@@ -21,6 +21,15 @@ const newObj = {
   d: 'fuh',
 };
 
+const AppHeader = ({ data }) => (
+  <header className="App-header">
+    <img src={data.logo} className="App-logo" alt="logo" />
+    <h1 className="App-title">
+      {data.title}
+    </h1>
+  </header>
+);
+
 const AppIntro = ({ children }) => (
   <div className="App-intro">
     {children.map(item => (
@@ -37,12 +46,7 @@ AppIntro.propTypes = {
 
 const App = () => (
   <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">
-Diego GS
-      </h1>
-    </header>
+    <AppHeader data={{ logo, title: 'Diego GS' }} />
     <AppIntro>
       {['hola', JSON.stringify(newObj), JSON.stringify(rest), sumParams(1, 2, 3, 4)]}
     </AppIntro>
