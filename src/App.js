@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 
@@ -30,6 +31,10 @@ const AppIntro = ({ children }) => (
   </div>
 );
 
+AppIntro.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+};
+
 const App = () => (
   <div className="App">
     <header className="App-header">
@@ -39,12 +44,7 @@ Diego GS
       </h1>
     </header>
     <AppIntro>
-      {[
-        `${a} ${b} ${JSON.stringify(rest)}`,
-        JSON.stringify(newObj),
-        JSON.stringify(rest),
-        sumParams(1, 2, 3, 4),
-      ]}
+      {['hola', JSON.stringify(newObj), JSON.stringify(rest), sumParams(1, 2, 3, 4)]}
     </AppIntro>
   </div>
 );
