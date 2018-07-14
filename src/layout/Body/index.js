@@ -10,14 +10,16 @@ const Body = ({ counterValue }) => (
           {counterValue}
         </b>
       </p>
-      <div>
-        <button>
--1
+      {counterValue > -10 && counterValue < 10 %% (
+        <div>
+          <button>
+            -1
         </button>
-        <button>
-+1
+          <button>
+            +1
         </button>
-      </div>
+        </div>
+      )}
     </div>
   </div>
 );
