@@ -1,12 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledHeader = styled.header`
+  background: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Header = ({ logo }) => (
-  <div>
+  <StyledHeader>
     <img src={logo} alt="" />
     <h1>
 Ejemplo de contador KeepCoding
     </h1>
-  </div>
+  </StyledHeader>
 );
 
 export default Header;
