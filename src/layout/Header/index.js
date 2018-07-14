@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
@@ -7,15 +8,30 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
+  align-items: center;
+`;
+
+const StyledImg = styled.img`
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+`;
+
+const StyledH1 = styled.h1`
+  font-size: 20px;
 `;
 
 const Header = ({ logo }) => (
   <StyledHeader>
-    <img src={logo} alt="" />
-    <h1>
+    <StyledImg src={logo} alt="" />
+    <StyledH1>
 Ejemplo de contador KeepCoding
-    </h1>
+    </StyledH1>
   </StyledHeader>
 );
+
+Header.propTypes = {
+  logo: PropTypes.string.isRequired,
+};
 
 export default Header;
