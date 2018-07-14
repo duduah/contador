@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { rgba } from 'polished';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
@@ -9,6 +10,9 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   padding: 10px 20px;
   align-items: center;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 ${rgba('#fff', 0.2)};
+  position: relative;
 `;
 
 const StyledImg = styled.img`

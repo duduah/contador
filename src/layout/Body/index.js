@@ -2,20 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
-  background: linear-gradient(#fcfcfc, #eee);
+  background: linear-gradient(#333, #000);
   flex: 1;
 `;
 
 const Body = ({ counterValue }) => (
   <StyledWrapper>
     <div>
-      <div>
+      <p>
         El valor del contador es
         {' '}
         <b>
           {counterValue}
         </b>
-      </div>
+      </p>
       {counterValue > -10 && counterValue < 10 ? (
         <div>
           <button type="button">
