@@ -20,48 +20,33 @@ const newObj = {
   d: 'fuh',
 };
 
+const AppIntro = () => (
+  <p className="App-intro">
+    <p>
+      {`${a} ${b} ${JSON.stringify(rest)}`}
+    </p>
+    <p>
+      {JSON.stringify(newObj)}
+    </p>
+    <p>
+      {JSON.stringify(rest)}
+    </p>
+    <p>
+      {sumParams(1, 2, 3, 4)}
+    </p>
+  </p>
+);
+
 const App = () => (
   <div className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <h1 className="App-title">
-        Diego GS
+Diego GS
       </h1>
     </header>
-    <p className="App-intro">
-      <p>
-        <b>
-          a:
-        </b>
-        {a}
-      </p>
-      <p>
-        <b>
-          b:
-        </b>
-        {b}
-      </p>
-      <p>
-        <b>
-          rest:
-        </b>
-        {JSON.stringify(rest)}
-      </p>
-      <p>
-        <b>
-          newObj:
-        </b>
-        {JSON.stringify(newObj)}
-      </p>
-      <p>
-        <b>
-          sumParams:
-        </b>
-        {sumParams(1, 2, 3, 4)}
-      </p>
-    </p>
+    <AppIntro />
   </div>
 );
-
 
 export default App;
