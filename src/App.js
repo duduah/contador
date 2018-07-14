@@ -30,6 +30,13 @@ const AppHeader = ({ data }) => (
   </header>
 );
 
+AppHeader.propTypes = {
+  data: PropTypes.shape({
+    logo: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+};
+
 const AppIntro = ({ children }) => (
   <div className="App-intro">
     {children.map(item => (
@@ -40,8 +47,12 @@ const AppIntro = ({ children }) => (
   </div>
 );
 
+AppIntro.defaultProps = {
+  children: [],
+};
+
 AppIntro.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };
 
 const App = () => (
