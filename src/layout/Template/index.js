@@ -3,10 +3,10 @@ import React from 'react';
 import Header from '../Header';
 import Body from '../Body';
 
-const Template = () => (
+const Template = ({ counterValue, logo }) => (
   <div>
-    <Header />
-    <Body />
+    <Header logo={logo} />
+    <Body counterValue={counterValue} />
   </div>
 );
 

@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Header = () => (
+const Header = ({ logo }) => (
   <div>
-Header
+    <img src={logo} alt="" />
+    <h1>
+Ejemplo de contador KeepCoding
+    </h1>
   </div>
 );
 
