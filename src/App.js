@@ -23,7 +23,7 @@ const newObj = {
 const AppIntro = ({ children }) => (
   <div className="App-intro">
     {children.map(item => (
-      <p>
+      <p key={item}>
         {item}
       </p>
     ))}
