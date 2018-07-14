@@ -21,6 +21,20 @@ const newObj = {
   d: 'fuh',
 };
 
+const AppLayout = ({ Header, Intro }) => (
+  <div className="App">
+    <Header data={{ logo, title: 'Diego GS' }} />
+    <Intro>
+      {['hola', JSON.stringify(newObj), JSON.stringify(rest), sumParams(1, 2, 3, 4)]}
+    </Intro>
+  </div>
+);
+
+AppLayout.propTypes = {
+  Header: PropTypes.func.isRequired,
+  Intro: PropTypes.func.isRequired,
+};
+
 const AppHeader = ({ data }) => (
   <header className="App-header">
     <img src={data.logo} className="App-logo" alt="logo" />
@@ -55,13 +69,6 @@ AppIntro.propTypes = {
   children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };
 
-const App = () => (
-  <div className="App">
-    <AppHeader data={{ logo, title: 'Diego GS' }} />
-    <AppIntro>
-      {['hola', JSON.stringify(newObj), JSON.stringify(rest), sumParams(1, 2, 3, 4)]}
-    </AppIntro>
-  </div>
-);
+const App = () => <AppLayout Header={AppHeader} Intro={AppIntro} />;
 
 export default App;
