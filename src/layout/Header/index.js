@@ -6,6 +6,7 @@ const StyledHeader = styled.header`
   color: #fff;
   display: flex;
   justify-content: space-between;
+  padding: 10px 20px;
 `;
 
 const Header = ({ logo }) => (
