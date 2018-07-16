@@ -16,10 +16,12 @@ const StyledWrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Template = ({ counterValue, logo }) => (
+const Template = ({ children, logo }) => (
   <StyledWrapper>
     <Header logo={logo} />
-    <Body counterValue={counterValue} />
+    <Body>
+      {children}
+    </Body>
   </StyledWrapper>
 );
 
