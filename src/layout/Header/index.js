@@ -4,8 +4,8 @@ import { rgba } from 'polished';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
-  background: #333;
-  color: #fff;
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;

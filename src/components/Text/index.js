@@ -9,19 +9,19 @@ const StyledText = styled.p`
     center: 'center',
     default: 'left',
   })};
-  color: ${styledMap('color', {
-    white: '#fff',
-    danger: '#ff0000',
-    primary: '#0066cc',
-    success: 'green',
-    default: '#333',
+  color: ${({ theme }) => styledMap('color', {
+    white: theme.colors.white,
+    danger: theme.colors.danger,
+    primary: theme.colors.primary,
+    success: theme.colors.success,
+    default: theme.colors.black,
   })};
-  background: ${styledMap('background', {
-    white: '#fff',
-    danger: '#ff0000',
-    primary: '#0066cc',
-    success: 'green',
-    black: '#333',
+  background: ${({ theme }) => styledMap('background', {
+    white: theme.colors.white,
+    danger: theme.colors.danger,
+    primary: theme.colors.primary,
+    success: theme.colors.success,
+    black: theme.colors.black,
     default: 'transparent',
   })};
   padding: ${styledMap({
