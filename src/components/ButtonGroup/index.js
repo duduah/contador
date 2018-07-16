@@ -1,8 +1,18 @@
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const StyledButtonGroup = styled.div`
-  display: flex;
-  justify-content: ${({ center }) => (center ? 'center' : 'space-between')};
-`;
+import Flex from '../Flex';
 
-export default StyledButtonGroup;
+const ButtonGroup = ({ center, ...props }) => (
+  <Flex justifyContent={center ? 'center' : 'space-between'} {...props} />
+);
+
+ButtonGroup.defaultProps = {
+  center: false,
+};
+
+ButtonGroup.propTypes = {
+  center: PropTypes.bool,
+};
+
+export default ButtonGroup;
