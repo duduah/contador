@@ -5,18 +5,12 @@ import Button from '../Button';
 import ButtonGroup from '../ButtonGroup';
 import Text from '../Text';
 
-const StyledText = styled(Text)`
-  font-size: 28px;
-  background: #ff0000;
-  padding: 20px;
-`;
-
 const ResetButtons = () => (
   <div>
-    <StyledText center color="#fff">
+    <Text center color="white" background="danger" space>
       Has llegado al límite
-    </StyledText>
-    <ButtonGroup>
+    </Text>
+    <ButtonGroup center>
       <Button type="button">
 Reiniciar
       </Button>
