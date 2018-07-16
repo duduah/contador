@@ -4,40 +4,71 @@ import styled from 'styled-components';
 const StyledWrapper = styled.div`
   background: linear-gradient(#333, #000);
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledBox = styled.div`
+  background: linear-gradient(#fff, #eee);
+  max-width: 100%;
+  width: 600px;
+  padding: 20px;
+`;
+
+const StyledText = styled.p`
+  margin: 0;
+  font-size: 22px;
+  text-align: ${props => (props.center ? 'center' : 'left')};
+`;
+
+const StyledButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledButton = styled.button`
+  background: #0066cc;
+  color: #fff;
+  border: 0;
+  text-transform: uppercase;
+  font-size: 24px;
+  padding: 10px 15px;
+  margin-top: 15px;
 `;
 
 const Body = ({ counterValue }) => (
   <StyledWrapper>
-    <div>
-      <p>
+    <StyledBox>
+      <StyledText center>
         El valor del contador es
         {' '}
         <b>
           {counterValue}
         </b>
-      </p>
+      </StyledText>
       {counterValue > -10 && counterValue < 10 ? (
-        <div>
-          <button type="button">
+        <StyledButtonGroup>
+          <StyledButton type="button">
 -1
-          </button>
-          <button type="button">
+          </StyledButton>
+          <StyledButton type="button">
 +1
-          </button>
-        </div>
+          </StyledButton>
+        </StyledButtonGroup>
       ) : (
         <div>
-          <p>
+          <StyledText>
 Has llegado al límite
-          </p>
-          <div>
-            <button type="button">
+          </StyledText>
+          <StyledButtonGroup>
+            <StyledButton type="button">
 Reiniciar
-            </button>
-          </div>
+            </StyledButton>
+          </StyledButtonGroup>
         </div>
       )}
-    </div>
+    </StyledBox>
   </StyledWrapper>
 );
 
