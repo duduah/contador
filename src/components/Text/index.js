@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const StyledText = styled.p`
   margin: 0;
   font-size: 22px;
-  text-aling: ${styledMap({
+  text-align: ${styledMap({
     center: 'center',
     default: 'left',
   })};
