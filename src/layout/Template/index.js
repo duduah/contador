@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { injectGlobal } from 'styled-components';
 import { normalize } from 'polished';
 
@@ -24,5 +25,10 @@ const Template = ({ children, logo }) => (
     </Body>
   </StyledWrapper>
 );
+
+Template.propTypes = {
+  ...Header.propTypes,
+  ...Body.propTypes,
+};
 
 export default Template;
