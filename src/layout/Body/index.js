@@ -19,7 +19,7 @@ const StyledBox = styled.div`
 const StyledText = styled.p`
   margin: 0;
   font-size: 22px;
-  text-align: ${props => (props.center ? 'center' : 'left')};
+  text-align: ${({ center }) => (center ? 'center' : 'left')};
 `;
 
 const StyledButtonGroup = styled.div`
