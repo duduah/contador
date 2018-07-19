@@ -39,6 +39,12 @@ class App extends Component {
     }, 5000);
   }
 
+  componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
   updateCounter(e) {
     const { value } = e.target;
     this.setState(prevState => ({
