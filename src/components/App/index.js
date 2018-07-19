@@ -25,6 +25,20 @@ class App extends Component {
     this.resetCounter = this.resetCounter.bind(this);
   }
 
+  componentDidMount() {
+    const { maxValue } = this.props;
+    this.interval = setInterval(() => {
+      this.setState(prevState => {
+        if (prevState.value * -1 > maxValue * -1 && prevState.value < maxValue) {
+          return {
+            value: prevState.value + 1,
+          };
+        }
+        return {};
+      });
+    }, 5000);
+  }
+
   updateCounter(e) {
     const { value } = e.target;
     this.setState(prevState => ({
