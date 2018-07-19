@@ -15,7 +15,7 @@ class App extends Component {
   updateCounter = e => {
     const { value } = e.target;
     this.setState(prevState => ({
-      value: prevState.value + Number(value),
+      value: prevState.value + +value,
     }));
   };
 
