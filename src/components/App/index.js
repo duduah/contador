@@ -21,7 +21,7 @@ class App extends Component {
 
   resetCounter = () => {
     this.setState({
-      value: 0,
+      value: INITIAL_STATE,
     });
   };
 
