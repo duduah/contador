@@ -6,11 +6,17 @@ import Button from '../Button';
 
 const OperationButtons = ({ updateCounter }) => (
   <ButtonGroup>
+    <Button type="button" onClick={updateCounter} value={-5}>
+      -5
+    </Button>
     <Button type="button" onClick={updateCounter} value={-1}>
       -1
     </Button>
     <Button type="button" onClick={updateCounter} value={1}>
       +1
+    </Button>
+    <Button type="button" onClick={updateCounter} value={5}>
+      +5
     </Button>
   </ButtonGroup>
 );
