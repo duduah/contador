@@ -10,20 +10,23 @@ const INITIAL_STATE = {
 };
 
 class App extends Component {
-  state = INITIAL_STATE;
+  constructor(props) {
+    super(props);
+    this.state = INITIAL_STATE;
+    this.updateCounter = this.updateCounter.bind(this);
+    this.resetCounter = this.resetCounter.bind(this);
+  }
 
-  updateCounter = e => {
+  updateCounter(e) {
     const { value } = e.target;
     this.setState(prevState => ({
       value: prevState.value + +value,
     }));
-  };
+  }
 
-  resetCounter = () => {
-    this.setState({
-      value: INITIAL_STATE,
-    });
-  };
+  resetCounter() {
+    this.setState(INITIAL_STATE);
+  }
 
   render() {
     const { value } = this.state;
@@ -39,5 +42,36 @@ class App extends Component {
     );
   }
 }
+
+// class App extends Component {
+//   state = INITIAL_STATE;
+
+//   updateCounter = e => {
+//     const { value } = e.target;
+//     this.setState(prevState => ({
+//       value: prevState.value + +value,
+//     }));
+//   };
+
+//   resetCounter = () => {
+//     this.setState({
+//       value: INITIAL_STATE,
+//     });
+//   };
+
+//   render() {
+//     const { value } = this.state;
+//     return (
+//       <Template logo="https://keepcoding.io/es/wp-content/uploads/sites/4/2015/05/logo-keepcoding-web.png">
+//         <CounterValue value={value} />
+//         {value > -10 && value < 10 ? (
+//           <OperationButtons updateCounter={this.updateCounter} />
+//         ) : (
+//           <ResetButtons resetCounter={this.resetCounter} />
+//         )}
+//       </Template>
+//     );
+//   }
+// }
 
 export default App;
