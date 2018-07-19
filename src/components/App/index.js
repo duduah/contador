@@ -25,6 +25,37 @@ class App extends Component {
     this.resetCounter = this.resetCounter.bind(this);
   }
 
+  componentDidMount() {
+    const { maxValue } = this.props;
+    this.interval = setInterval(() => {
+      this.setState(prevState => {
+        if (prevState.value * -1 > maxValue * -1 && prevState.value < maxValue) {
+          return {
+            value: prevState.value + 1,
+          };
+        }
+        return {};
+      });
+    }, 5000);
+  }
+
+  componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      nextProps.maxValue != this.props.maxValue ||
+      (nextState.value != this.props.value && nextState.value % 2 == 0)
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
   updateCounter(e) {
     const { value } = e.target;
     this.setState(prevState => ({
