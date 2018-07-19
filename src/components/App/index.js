@@ -46,7 +46,10 @@ class App extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.maxValue != this.props.maxValue || nextState.value != this.props.value) {
+    if (
+      nextProps.maxValue != this.props.maxValue ||
+      (nextState.value != this.props.value && nextState.value % 2 == 0)
+    ) {
       return true;
     }
 
