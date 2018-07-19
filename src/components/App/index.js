@@ -5,14 +5,23 @@ import CounterValue from '../CounterValue';
 import OperationButtons from '../OperationButtons';
 import ResetButtons from '../ResetButtons';
 
+const INITIAL_STATE = {
+  value: 0,
+};
+
 class App extends Component {
-  state = {
-    value: 10,
+  state = INITIAL_STATE;
+
+  updateCounter = e => {
+    const { value } = e.target;
+    this.setState(prevState => ({
+      value: prevState.value + +value,
+    }));
   };
 
   resetCounter = () => {
     this.setState({
-      value: 0,
+      value: INITIAL_STATE,
     });
   };
 
@@ -22,7 +31,7 @@ class App extends Component {
       <Template logo="https://keepcoding.io/es/wp-content/uploads/sites/4/2015/05/logo-keepcoding-web.png">
         <CounterValue value={value} />
         {value > -10 && value < 10 ? (
-          <OperationButtons />
+          <OperationButtons updateCounter={this.updateCounter} />
         ) : (
           <ResetButtons resetCounter={this.resetCounter} />
         )}
