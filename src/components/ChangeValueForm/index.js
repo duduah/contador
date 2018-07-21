@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Button from '../Button';
@@ -20,13 +21,22 @@ const StyledButton = Button.extend`
   margin-top: 0;
 `;
 
-const ChangeValueForm = () => (
+const ChangeValueForm = ({ inputValue, updateInputValue }) => (
   <StyledForm>
-    <StyledInput type="text" value="4" />
+    <StyledInput type="number" value={inputValue} onChange={updateInputValue} />
     <StyledButton>
 Guardar
     </StyledButton>
   </StyledForm>
 );
+
+ChangeValueForm.defaultProps = {
+  inputValue: '',
+};
+
+ChangeValueForm.propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  updateInputValue: PropTypes.func.isRequired,
+};
 
 export default ChangeValueForm;
