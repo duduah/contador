@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import Template from '../../layout';
 import CounterValue from '../CounterValue';
 import OperationButtons from '../OperationButtons';
+import ChangeValueForm from '../ChangeValueForm';
 import ResetButtons from '../ResetButtons';
 
 const INITIAL_STATE = {
   value: 0,
+  inputValue: '0',
 };
 
 class App extends Component {
@@ -22,33 +25,16 @@ class App extends Component {
     super(props);
     this.state = INITIAL_STATE;
     this.updateCounter = this.updateCounter.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
     this.resetCounter = this.resetCounter.bind(this);
-  }
-
-  componentDidMount() {
-    const { maxValue } = this.props;
-    this.interval = setInterval(() => {
-      this.setState(prevState => {
-        if (prevState.value * -1 > maxValue * -1 && prevState.value < maxValue) {
-          return {
-            value: prevState.value + 1,
-          };
-        }
-        return {};
-      });
-    }, 5000);
-  }
-
-  componentWillUnmount() {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (
-      nextProps.maxValue != this.props.maxValue ||
-      (nextState.value != this.props.value && nextState.value % 2 == 0)
+      nextProps.maxValue !== this.props.maxValue ||
+      nextState.value !== this.props.value ||
+      nextState.inputValue !== this.props.inputValue
     ) {
       return true;
     }
@@ -60,21 +46,46 @@ class App extends Component {
     const { value } = e.target;
     this.setState(prevState => ({
       value: prevState.value + +value,
+      inputValue: (prevState.value + +value).toString(),
     }));
+  }
+
+  updateInputValue(e) {
+    const { value } = e.target;
+    this.setState({
+      inputValue: value,
+    });
   }
 
   resetCounter() {
     this.setState(INITIAL_STATE);
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    this.setState(prevState => ({
+      value: +prevState.inputValue,
+    }));
+  }
   render() {
-    const { value } = this.state;
+    const { value, inputValue } = this.state;
     const { maxValue } = this.props;
     return (
       <Template logo="https://keepcoding.io/es/wp-content/uploads/sites/4/2015/05/logo-keepcoding-web.png">
         <CounterValue value={value} />
         {value > maxValue * -1 && value < maxValue ? (
-          <OperationButtons updateCounter={this.updateCounter} />
+          <Fragment>
+            <OperationButtons
+              value={value}
+              maxValue={maxValue}
+              updateCounter={this.updateCounter}
+            />
+            <ChangeValueForm
+              inputValue={inputValue}
+              updateInputValue={this.updateInputValue}
+              onSubmit={this.onSubmit}
+            />
+          </Fragment>
         ) : (
           <ResetButtons resetCounter={this.resetCounter} />
         )}
