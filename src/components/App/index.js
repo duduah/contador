@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import Template from '../../layout';
 import CounterValue from '../CounterValue';
 import OperationButtons from '../OperationButtons';
+import ChangeValueForm from '../ChangeValueForm';
 import ResetButtons from '../ResetButtons';
 
 const INITIAL_STATE = {
@@ -74,7 +76,10 @@ class App extends Component {
       <Template logo="https://keepcoding.io/es/wp-content/uploads/sites/4/2015/05/logo-keepcoding-web.png">
         <CounterValue value={value} />
         {value > maxValue * -1 && value < maxValue ? (
-          <OperationButtons updateCounter={this.updateCounter} />
+          <Fragment>
+            <OperationButtons updateCounter={this.updateCounter} />
+            <ChangeValueForm />
+          </Fragment>
         ) : (
           <ResetButtons resetCounter={this.resetCounter} />
         )}
