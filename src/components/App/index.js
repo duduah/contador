@@ -9,7 +9,7 @@ import ResetButtons from '../ResetButtons';
 
 const INITIAL_STATE = {
   value: 0,
-  initValue: '',
+  inputValue: '0',
 };
 
 class App extends Component {
@@ -27,6 +27,7 @@ class App extends Component {
     this.updateCounter = this.updateCounter.bind(this);
     this.updateInputValue = this.updateInputValue.bind(this);
     this.resetCounter = this.resetCounter.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -60,6 +61,12 @@ class App extends Component {
     this.setState(INITIAL_STATE);
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    this.setState(prevState => ({
+      value: +prevState.inputValue,
+    }));
+  }
   render() {
     const { value, inputValue } = this.state;
     const { maxValue } = this.props;
@@ -68,8 +75,16 @@ class App extends Component {
         <CounterValue value={value} />
         {value > maxValue * -1 && value < maxValue ? (
           <Fragment>
-            <OperationButtons updateCounter={this.updateCounter} />
-            <ChangeValueForm inputValue={inputValue} updateInputValue={this.updateInputValue} />
+            <OperationButtons
+              value={value}
+              maxValue={maxValue}
+              updateCounter={this.updateCounter}
+            />
+            <ChangeValueForm
+              inputValue={inputValue}
+              updateInputValue={this.updateInputValue}
+              onSubmit={this.onSubmit}
+            />
           </Fragment>
         ) : (
           <ResetButtons resetCounter={this.resetCounter} />

@@ -21,22 +21,19 @@ const StyledButton = Button.extend`
   margin-top: 0;
 `;
 
-const ChangeValueForm = ({ inputValue, updateInputValue }) => (
-  <StyledForm>
+const ChangeValueForm = ({ inputValue, updateInputValue, onSubmit }) => (
+  <StyledForm onSubmit={onSubmit}>
     <StyledInput type="number" value={inputValue} onChange={updateInputValue} />
-    <StyledButton>
+    <StyledButton type="submit">
 Guardar
     </StyledButton>
   </StyledForm>
 );
 
-ChangeValueForm.defaultProps = {
-  inputValue: '',
-};
-
 ChangeValueForm.propTypes = {
   inputValue: PropTypes.string.isRequired,
   updateInputValue: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ChangeValueForm;
