@@ -2,10 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Template from '../../layout';
-import CounterValue from '../CounterValue';
-import OperationButtons from '../OperationButtons';
-import ChangeValueForm from '../ChangeValueForm';
-import ResetButtons from '../ResetButtons';
+import {ChangeValueForm, CounterValue, OperationButtons, ResetButtons} from '..';
 
 const INITIAL_STATE = {
   value: 0,
